@@ -9,6 +9,7 @@ RUN apt-get update && \
 ADD / /wje-mayhem
 WORKDIR /wje-mayhem
 
+
 ## Build Step 
 RUN rm -rf build && mkdir build \
    && cd build
