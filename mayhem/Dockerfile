@@ -9,7 +9,7 @@ RUN apt-get update && \
 ADD / /wje-mayhem
 WORKDIR /wje-mayhem
 
-## Build Step
+## Build Step 
 RUN rm -rf build && mkdir build \
    && cd build
    # && cmake .. \
@@ -19,6 +19,4 @@ RUN rm -rf build && mkdir build \
 FROM --platform=linux/amd64 ubuntu:20.04
 COPY --from=builder /wje-mayhem /
 # COPY --from=builder /wje-mayhem/build/src/cli/wjecli /
-
-
 # COPY --from=builder /wje-mayhem /
