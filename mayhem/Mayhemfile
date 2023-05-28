@@ -1,0 +1,5 @@
+project: wje-mayhem
+target: wje-mayhem-1
+
+cmds:
+  - cmd: /build/src/cli/wjecli
