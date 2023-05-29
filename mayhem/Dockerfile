@@ -3,7 +3,7 @@ FROM --platform=linux/amd64 ubuntu:20.04 as builder
 
 ## Install build dependencies.
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y gcc make cmake build-essential
+    DEBIAN_FRONTEND=noninteractive apt-get install -y clang make cmake build-essential
 
 ## Add Source Code
 ADD / /wje-mayhem
