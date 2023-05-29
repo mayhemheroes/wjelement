@@ -162,137 +162,9 @@ int runcmd(WJElement *doc, WJElement *current, char *line)
 	}
 }
 
-// int main(int argc, char **argv)
-// {
-// 	FILE		*in			= NULL;
-// 	WJElement	doc			= NULL;
-// 	WJElement	current		= NULL;
-// 	int			r			= 0;
-// 	WJReader	reader;
-// 	char		*cmd;
-// 	char		line[1024];
-
-// 	/* Print pretty documents by default */
-// 	wje.pretty = TRUE;
-
-// 	/* Print base 10 by default */
-// 	wje.base = 10;
-
-// 	if (argc > 2) {
-// 		/* Umm, we only allow one argument... a filename */
-// 		usage(argv[0]);
-// 		return(1);
-// 	}
-
-// 	MemoryManagerOpen("wje-cli");
-
-// 	if (argc == 2) {
-// 		if (!stricmp(argv[1], "--help") || !stricmp(argv[1], "-h")) {
-// 			usage(argv[0]);
-// 			MemoryManagerClose("wje-cli");
-// 			return(0);
-// 		}
-
-// 		if (!(in = fopen(argv[1], "rb"))) {
-// 			perror(NULL);
-// 			MemoryManagerClose("wje-cli");
-// 			return(2);
-// 		}
-
-// 		/*
-// 			A filename was specified on the command line. Does this look
-// 			like a script, or a JSON document?
-// 		*/
-// 		if (fgets(line, sizeof(line), in) &&
-// 			!strncmp(line, "#!", 2)
-// 		) {
-// 			/* This looks like a script, read commands from this file */
-// 			;
-// 		} else {
-// 			/* Assume it is a JSON document, rewind back to the start. */
-// 			rewind(in);
-
-// 			if ((reader = WJROpenFILEDocument(in, NULL, 0))) {
-// 				doc = WJEOpenDocument(reader, NULL, NULL, NULL);
-// 				WJRCloseDocument(reader);
-
-// 				wje.filename = MemStrdup(argv[1]);
-// 			}
-
-// 			fclose(in);
-// 			in = NULL;
-
-// 			if (!doc) {
-// 				fprintf(stderr, "Could not parse JSON document: %s\n", argv[1]);
-// 			MemoryManagerClose("wje-cli");
-// 				return(3);
-// 			}
-// 		}
-// 	}
-
-// 	if (!in) {
-// 		/* Read commands from standard in */
-// 		in = stdin;
-// 	}
-
-// 	if (!doc) {
-// 		/* Start with an empty document if one wasn't specified */
-// 		doc = WJEObject(NULL, NULL, WJE_SET);
-// 	}
-// 	current = doc;
-
-// 	for (;;) {
-// 		/* Read the next command */
-// 		if (in == stdin && isatty(fileno(stdin))) {
-// 			fprintf(stdout, "wje");
-
-// 			if (r) {
-// 				fprintf(stdout, " (%d)", r);
-// 			}
-
-// 			fprintf(stdout, "> ");
-// 			fflush(stdout);
-// 		}
-
-// 		if (fgets(line, sizeof(line), in)) {
-// 			cmd = _skipspace(line, NULL);
-// 		} else {
-// 			cmd = NULL;
-// 		}
-
-// 		if (!cmd || !*cmd) {
-// 			/* Ignore blank lines */
-// 		} else {
-// 			r = runcmd(&doc, &current, cmd);
-// 		}
-// 		cmd = NULL;
-
-// 		if (feof(in) || wje.exiting) {
-// 			break;
-// 		}
-// 	}
-
-// 	if (doc) {
-// 		WJECloseDocument(doc);
-// 		doc = NULL;
-// 	}
-
-// 	if (in && in != stdin) {
-// 		fclose(in);
-// 		in = NULL;
-// 	}
-
-// 	if (wje.filename) {
-// 		MemRelease(&wje.filename);
-// 	}
-
-// 	MemoryManagerClose("wje-cli");
-// 	return(r);
-// }
-
-
-int LLVMFuzzerTestOneInput(char* data, size_t size) {
-   FILE		*in			= NULL;
+int main(int argc, char **argv)
+{
+	FILE		*in			= NULL;
 	WJElement	doc			= NULL;
 	WJElement	current		= NULL;
 	int			r			= 0;
@@ -306,22 +178,22 @@ int LLVMFuzzerTestOneInput(char* data, size_t size) {
 	/* Print base 10 by default */
 	wje.base = 10;
 
-	// if (size > 2) {
-	// 	/* Umm, we only allow one argument... a filename */
-	// 	usage(&data[0]);
-	// 	return(1);
-	// }
+	if (argc > 2) {
+		/* Umm, we only allow one argument... a filename */
+		usage(argv[0]);
+		return(1);
+	}
 
-	// MemoryManagerOpen(data[1]);
+	MemoryManagerOpen("wje-cli");
 
-	if (size == 2) {
-		if (!stricmp(&data[1], "--help") || !stricmp(&data[1], "-h")) {
-			usage(&data[0]);
+	if (argc == 2) {
+		if (!stricmp(argv[1], "--help") || !stricmp(argv[1], "-h")) {
+			usage(argv[0]);
 			MemoryManagerClose("wje-cli");
 			return(0);
 		}
 
-		if (!(in = fopen(&data[1], "rb"))) {
+		if (!(in = fopen(argv[1], "rb"))) {
 			perror(NULL);
 			MemoryManagerClose("wje-cli");
 			return(2);
@@ -344,14 +216,14 @@ int LLVMFuzzerTestOneInput(char* data, size_t size) {
 				doc = WJEOpenDocument(reader, NULL, NULL, NULL);
 				WJRCloseDocument(reader);
 
-				wje.filename = MemStrdup(&data[1]);
+				wje.filename = MemStrdup(argv[1]);
 			}
 
 			fclose(in);
 			in = NULL;
 
 			if (!doc) {
-				fprintf(stderr, "Could not parse JSON document: %s\n", &data[1]);
+				fprintf(stderr, "Could not parse JSON document: %s\n", argv[1]);
 			MemoryManagerClose("wje-cli");
 				return(3);
 			}
