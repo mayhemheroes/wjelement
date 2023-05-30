@@ -1,0 +1,67 @@
+{
+   "name": "John Doe",
+   "age": 30,
+   "address": {
+      "street": "123 Main Street",
+      "city": "Exampleville",
+      "state": "Sample State",
+      "country": "Sample Country"
+   },
+   "contacts": [
+      {
+         "type": "email",
+         "value": "john.doe@example.com"
+      },
+      {
+         "type": "phone",
+         "value": "123-456-7890"
+      }
+   ],
+   "isEmployed": true,
+   "hobbies": [
+      "reading",
+      "painting",
+      "gaming"
+   ],
+   "education": {
+      "degree": "Bachelor's",
+      "major": "Computer Science",
+      "university": {
+         "name": "Example University",
+         "location": "Sample City"
+      }
+   },
+   "languages": {
+      "spoken": [
+         "English",
+         "Spanish"
+      ],
+      "programming": [
+         "Java",
+         "Python",
+         "JavaScript"
+      ]
+   },
+   "friends": [
+      {
+         "name": "Jane Smith",
+         "age": 28,
+         "address": {
+            "street": "456 Elm Street",
+            "city": "Sampletown",
+            "state": "Test State",
+            "country": "Test Country"
+         }
+      },
+      {
+         "name": "Bob Johnson",
+         "age": 32,
+         "address": {
+            "street": "789 Oak Street",
+            "city": "Exampleville",
+            "state": "Sample State",
+            "country": "Sample Country"
+         }
+      }
+   ]
+}
