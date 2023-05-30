@@ -5,4 +5,4 @@ cmds:
   - cmd: /wjecli @@
 
 testsuite:
-  - file:///seed.json
+  - file://seed.json
