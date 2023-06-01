@@ -8,4 +8,3 @@ target_link_libraries(wjecli
 
 install(TARGETS wjecli DESTINATION bin)
 install(PROGRAMS wje DESTINATION bin)
-

@@ -1,0 +1,8 @@
+project: wje-mayhem
+target: wje-mayhem-2
+
+cmds:
+  - cmd: /wjecli @@
+
+testsuite:
+  - file://seed.json

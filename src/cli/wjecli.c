@@ -289,4 +289,3 @@ int main(int argc, char **argv)
 	MemoryManagerClose("wje-cli");
 	return(r);
 }
-
